@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title><%= film %></title>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/videosub-0.9.9.js"></script>
+	<style>
+	</style>
+  </head>
+  <body>
+    <h3><u>Si le streaming ne marche pas pour différentes raisons, vous pouvez télécharger le film en faisant:</u>
+      <ol><li>Clique droit sur le film</li>
+        <li>Enregistrer la vidéo sous</li>
+        <li>Choisir un dossier (téléchargements par exemple)</li>
+        <li>Valider </li></ol></h3>
+    <video controls="controls" width="720" height="405">
+    <source src="/db/movie/<%= film %>" type="video/mp4">
+    <source src="/db/movie/<%= film %>" type="video/ogg">
+    <source src="/db/movie/<%= film %>" type="video/WebM">
+  <% if(subtitles[0]){ for(i in subtitles){ %><track src="/db/movie/<%= film %>/subtitles/<%= subtitles[i] %>" kind="subtitles" srclang="en-US" label="<%=subtitles[i]%>" />
+    <%  }
+  } %>Your Browser doesn't support HTML5 videos
+  </video>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "myriad";
+  src: url("/css/m.otf");
+}
+
+body{
+  background-color: #05142d;
+  color: white;
+  font-family: "myriad";
+}
+
+a{
+  color: white;
+}
+
+table, td, th{
+  text-align: center;
+}

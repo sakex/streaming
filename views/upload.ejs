@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script src="/jquery"></script>
+    <script src="/socket.io/socket.io.js"></script>
+     <script src="/siofu/client.js"></script>
+    <script src="/js/upload.js"></script>
+  <title id="upl">Upload</title>
+  <link rel="stylesheet" href="/css/main.css">
+	<style>
+  #progress{
+    width: 50%;
+    height: 10px;
+    position: absolute;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 20px;
+    border-color: white;
+  }
+
+  #toFill{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background-color: white;
+  }
+	</style>
+  </head>
+  <body>
+  <p>Bonjour et merci d'upload des vidéos sur le site!</p>
+  <p>Merci de ne mettre des films qu'au format .mp4 et de leur donner le nom adéquat!</p>
+  <p>L'upload commencera dès que vous aurez choisi votre fichier...</p><br>
+<input type="file" id="upload_input"/><br><br>
+<div id="progress">
+<div id="toFill"> </div>
+</div>
+<br> <p id="percentage"> 0%</p>
+  </body>
+</html>

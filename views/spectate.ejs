@@ -18,9 +18,12 @@
     <source src="/db/movie/<%= film %>" type="video/mp4">
     <source src="/db/movie/<%= film %>" type="video/ogg">
     <source src="/db/movie/<%= film %>" type="video/WebM">
-  <% if(subtitles[0]){ for(i in subtitles){ %><track src="/db/movie/<%= film %>/subtitles/<%= subtitles[i] %>" kind="subtitles" srclang="en-US" label="<%=subtitles[i]%>" />
+  <% if(subtitles[0]){ for(i in subtitles){ %>
+    <track src="/db/movie/<%= film %>/subtitles/<%= subtitles[i] %>" kind="subtitles" srclang="en-US" label="<%=subtitles[i]%>" />
     <%  }
   } %>Your Browser doesn't support HTML5 videos
   </video>
+  <br><br>
+  <a href="../../" id="home">Home</a>
   </body>
 </html>

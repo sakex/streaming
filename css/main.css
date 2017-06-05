@@ -16,3 +16,9 @@ a{
 table, td, th{
   text-align: center;
 }
+
+#toUp{
+  position: absolute;
+  right: 20%;
+  top: 10%;
+}

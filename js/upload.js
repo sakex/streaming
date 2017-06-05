@@ -4,13 +4,15 @@ document.addEventListener("DOMContentLoaded", function(){
     var socket = io.connect();
     var siofu = new SocketIOFileUpload(socket);
 
-    // Configure the three ways that SocketIOFileUpload can read files:
-    siofu.listenOnInput(document.getElementById("upload_input"));
+
+    siofu.listenOnSubmit(document.getElementById("btn"),
+    document.getElementById("upload_input"));
+
 
     // Do something on upload progress:
     siofu.addEventListener("progress", function(event){
         var percent = Math.floor(event.bytesLoaded / event.file.size * 100);
-        console.log("File is", percent.toFixed(2), "percent loaded");
+        //console.log("File is", percent.toFixed(2), "percent loaded");
         $("#toFill").width(percent+"%");
         $("#percentage").text(percent+"%");
         $("#upl").text("Upload ("+percent+"%)");

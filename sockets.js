@@ -1,9 +1,9 @@
-const routes = require(`${__dirname}/../routes.js`);
+const routes = require('./routes.js');
 const siofu = require('socketio-file-upload');
 routes.app.use(siofu.router);
 const io = require('socket.io').listen(routes.server);
 const spawn = require('child_process').spawn;
-const db = require(`${__dirname}/../DB/mongo.js`);
+const db = require('../DB/mongo.js');
 const fs = require('fs');
 
 
@@ -86,7 +86,7 @@ const download = (url, name) => {
 
 io.on('connection', (socket) => {
     const uploader = new siofu();
-    uploader.dir = '${__dirname}/../Temp';
+    uploader.dir = `${__dirname}/../Temp`;
     uploader.listen(socket);
 
     socket.on('complete', (nam) => {

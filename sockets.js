@@ -1,18 +1,18 @@
-const routes = require(`${__dirname}/routes.js`);
+const routes = require(`${__dirname}/../routes.js`);
 const siofu = require('socketio-file-upload');
 routes.app.use(siofu.router);
 const io = require('socket.io').listen(routes.server);
 const spawn = require('child_process').spawn;
-const db = require(`${__dirname}/DB/mongo.js`);
+const db = require(`${__dirname}/../DB/mongo.js`);
 const fs = require('fs');
 
 
 const upMovie = (nam) => {
   // Add movie
     const repo = nam.slice(0, nam.length-4);
-    fs.mkdir(`/mnt/Movies/${repo}`, () => {
-      fs.mkdir(`/mnt/Movies/${repo}/subtitles`, () => {
-        fs.rename(`/mnt/Temp/${nam}`, `/mnt/Movies/${repo}/${nam}`, () => {
+    fs.mkdir(`${__dirname}/../Movies/${repo}`, () => {
+      fs.mkdir(`${__dirname}/../Movies/${repo}/subtitles`, () => {
+        fs.rename(`${__dirname}/../Temp/${nam}`, `${__dirname}/../Movies/${repo}/${nam}`, () => {
         console.log('film déplacé!');
         db.addMovie(repo);
       });
@@ -26,7 +26,7 @@ const upVTT = (nam) => {
     db.getFilms({'nom': repo}, 'nom', null, (result) => {
       //console.log(result);
       if(result[0]){
-        fs.rename(`/mnt/Temp/${nam}`, `/mnt/Movies/${repo}/subtitles/${nam}`, () => {
+        fs.rename(`${__dirname}/../Temp/${nam}`, `${__dirname}/../Movies/${repo}/subtitles/${nam}`, () => {
         console.log('Sous-titres ajoutés!');
       });
     }
@@ -39,10 +39,10 @@ const upSRT = (nam) => {
     db.getFilms({'nom': repo}, 'nom', null, (result) => {
       //console.log(result);
       if(result[0]){
-        fs.rename(`/mnt/Temp/${nam}`, `/mnt/Movies/${repo}/subtitles/${nam}`, () => {
-          spawn('node', ['child_process/SRTVTT.js', `/mnt/Movies/${repo}/subtitles/${repo}.srt`, `/mnt/Movies/${repo}/subtitles/${repo}.vtt`]);
+        fs.rename(`${__dirname}/../Temp/${nam}`, `${__dirname}/../Movies/${repo}/subtitles/${nam}`, () => {
+          spawn('node', ['child_process/SRTVTT.js', `${__dirname}/../Movies/${repo}/subtitles/${repo}.srt`, `${__dirname}/../Movies/${repo}/subtitles/${repo}.vtt`]);
           setTimeout(() => {
-            fs.unlink(`/mnt/Movies/${repo}/subtitles/${repo}.srt`, (err) => {
+            fs.unlink(`${__dirname}/../Movies/${repo}/subtitles/${repo}.srt`, (err) => {
               if(err) console.log(err);
             });
           }, 1000);
@@ -86,7 +86,7 @@ const download = (url, name) => {
 
 io.on('connection', (socket) => {
     const uploader = new siofu();
-    uploader.dir = '/mnt/Temp';
+    uploader.dir = '${__dirname}/../Temp';
     uploader.listen(socket);
 
     socket.on('complete', (nam) => {

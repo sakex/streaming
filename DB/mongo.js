@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const readdir = require('/mnt/readdir.js');
-const mv = require('/mnt/mv.js');
+const readdir = require('../readdir.js');
+const mv = require('../mv.js');
 mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://127.0.0.1/streaming',
@@ -76,7 +76,7 @@ const extractMovie = dir => {
 
 const addTemp = async name => {
   try{
-    const dir = await readdir(`/mnt/Movies/${name}`);
+    const dir = await readdir(`../Movies/${name}`);
     const movie = extractMovie(dir);
     await mv(
       `/mnt/downloads/${name}`,
@@ -101,8 +101,8 @@ const addTemp = async name => {
   catch(err){
     if(err.code === 404)
       await mv(
-        `/mnt/Movies/${name}`,
-        `/mnt/failed/${name}`
+        `../Movies/${name}`,
+        `../failed/${name}`
       );
     else
       throw err;

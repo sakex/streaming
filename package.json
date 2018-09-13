@@ -4,12 +4,13 @@
   "description": "Build your own private streaming website with Node.JS and MongoDB",
   "main": "streaming.js",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.3",
     "express": "^4.14.0",
-    "mongoose": "~4.1.0",
+    "formidable": "^1.0.17",
+    "mongoose": "^4.13.17",
     "socket.io": "^1.7.1",
-    "socketio-file-upload": "^0.6.0",
-    "formidable": "^1.0.17"
+    "socketio-file-upload": "^0.6.0"
   },
   "devDependencies": {},
   "scripts": {

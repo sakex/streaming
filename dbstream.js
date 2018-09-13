@@ -1,42 +1,38 @@
-var fs = require('fs');
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-/*var dir = fs.readdirSync("/home/pi/Temp"); //Liste des films dans movies
-console.log(dir);*/
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://127.0.0.1/streaming', function(err) {
-	if (err) { throw err; }
-	});
+mongoose.connect('mongodb://127.0.0.1/streaming', {
+    useMongoClient: true
+  },
+  err => {
+    if (err) throw err;
+  });
 
-	var FilmsSchema = new mongoose.Schema({
-		nom: String,
+  var FilmsSchema = new mongoose.Schema({
+    nom: String,
     vues: Number,
     postePar: String,
     subtitles: []
-	});
+  });
 
-	var Films = mongoose.model('films', FilmsSchema);
+  const Films = mongoose.model('films', FilmsSchema);
+
+
+  const valid = x => {
+    console.log(x);
+  };
 
   //for(i in dir){
-    var newFilm = new Films();
-    newFilm.nom = "Pirates of the Caribbean Curse of the Black Pearl";
+    const newFilm = new Films();
+    newFilm.nom = process.argv[2];
     newFilm.vues = 0;
-    newFilm.postePar = "Sakex";
+    newFilm.postePar = 'Sakex';
     newFilm.subtitles = [];
 
-    newFilm.save(function (err) {
-      if (err) { throw err; }
+    newFilm.save((err) => {
+      if (err)
+        throw err;
       valid(newFilm);
+      mongoose.connection.close();
     });
-  //}
-
-
-
-
-  function valid(x){
-    console.log(x);
-  }
-
-
-mongoose.connection.close();

@@ -1,0 +1,18 @@
+#progress{
+  width: 50%;
+  height: 10px;
+  position: absolute;
+  border-style: solid;
+  border-width: medium;
+  border-radius: 20px;
+  border-color: white;
+}
+
+#toFill{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background-color: white;
+}

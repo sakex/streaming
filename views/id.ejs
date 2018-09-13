@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/css/main.css">
+    <title>Log</title>
+  </head>
+  <body>
+    <h2> Il faut connaître le mot de passe pour accèder au site. Veuillez l'entrer: </h2>
+    <form action="/sendmdp" method="post">
+      <input type="password" name="mdp">
+      <br>
+      <br>
+      <input type="submit" value="Valider">
+    </form>
+  </body>
+</html>

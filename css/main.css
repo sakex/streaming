@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "myriad";
+  src: url("/css/m.otf");
+}
+
+body{
+  background-color: #05142d;
+  color: white;
+  font-family: "myriad";
+}
+
+a{
+  color: white;
+}
+
+table, td, th{
+  text-align: center;
+}
+
+#toUp{
+  position: absolute;
+  right: 20%;
+  top: 10%;
+}
+
+#search{
+  width: 20%;
+  height: 20px;
+  color: black;
+  background-color: white;
+  border: black;
+}
+
+.noCursor{
+  cursor: none;
+}

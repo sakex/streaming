@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/css/main.css">
+    <title>Streaming</title>
+  </head>
+  <body>
+  <label>
+    <input list="dtlist" type="text" id="search" placeholder="Search...">
+  </label>
+    <datalist id="dtlist">
+      <option value="test">
+    </datalist>
+
+  <a href="upload" id="toUp">Upload Movie</a>
+    <table>
+      <tr>
+        <th><h1>Name</h1></th>
+        <th><h1>View Count</h1></th>
+      </tr>
+    <% for(x in filmList){ %>
+    <tr>
+      <td>
+        <a href="/films/<%= filmList[x].nom %>">
+        <%= filmList[x].nom %></a>
+      </td>
+      <td>
+        <%= filmList[x].vues %>
+      </td>
+  <%} %>
+</table>
+<br><br>
+
+<script src="/js/search.js"></script>
+  </body>
+</html>

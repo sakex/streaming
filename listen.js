@@ -1,5 +1,5 @@
 const readPromise = require('./readdir.js');
-const addTemp = require('./DB/mongo.js');
+const {addTemp} = require('./DB/mongo.js');
 
 const addFiles = async () => {
   try {

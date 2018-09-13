@@ -3,7 +3,7 @@ const siofu = require('socketio-file-upload');
 routes.app.use(siofu.router);
 const io = require('socket.io').listen(routes.server);
 const spawn = require('child_process').spawn;
-const db = require('../DB/mongo.js');
+const db = require('./DB/mongo.js');
 const fs = require('fs');
 
 

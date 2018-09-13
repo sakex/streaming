@@ -72,7 +72,7 @@ app.get('/MYRIADPRO-REGULAR.OTF', (req, res) => {
 app.get('/films/:film', (req, res) => {
   chckUser(req.cookies.mdp, res, () => {
     const film = req.params.film;
-    fs.readdir(`../movies/${film}/subtitles/`, (err, data) => {
+    fs.readdir(`/mnt/movies/${film}/subtitles/`, (err, data) => {
       if(err) throw err;
       res.render('spectate.ejs', {film: film, subtitles: data});
     });
@@ -96,12 +96,12 @@ app.get('/css/:style', (req, res) => {
 app.get('/db/movie/:film', (req, res) => {
   //console.log('d')
   chckUser(req.cookies.mdp, res, () => {
-    res.sendFile(`../Movies/${req.params.film}/${req.params.film}.mp4`);
+    res.sendFile(`/mnt/Movies/${req.params.film}/${req.params.film}.mp4`);
   });
 });
 
 app.get('/db/movie/:film/subtitles/:subtitles', (req, res) => {
-  res.sendFile(`../Movies/${req.params.film}/subtitles/${req.params.subtitles}`);
+  res.sendFile(`/mnt/Movies/${req.params.film}/subtitles/${req.params.subtitles}`);
 });
 
 app.get('/makeDL', (req, res) => {

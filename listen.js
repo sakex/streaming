@@ -3,7 +3,7 @@ const addTemp = require('./DB/mongo.js');
 
 const addFiles = async () => {
   try {
-    const newFiles = await readPromise('../downloads');
+    const newFiles = await readPromise('/mnt/downloads');
     await Promise.all(newFiles.map(async file => {
       await addTemp(file);
     }));

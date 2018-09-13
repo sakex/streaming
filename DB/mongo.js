@@ -76,7 +76,7 @@ const extractMovie = dir => {
 
 const addTemp = async name => {
   try{
-    const dir = await readdir(`../Movies/${name}`);
+    const dir = await readdir(`/mnt/downloads/${name}`);
     const movie = extractMovie(dir);
     await mv(
       `/mnt/downloads/${name}`,
@@ -99,6 +99,7 @@ const addTemp = async name => {
     return await Promise.all([mvPromise, newFilm.save()]);
   }
   catch(err){
+    console.error(err.stack);
     if(err.code === 404)
       await mv(
         `../Movies/${name}`,
